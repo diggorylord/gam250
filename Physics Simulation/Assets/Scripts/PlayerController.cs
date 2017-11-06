@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	public float speed;
+	public float movementSpeed;
 	public float jumpHeight;
 	public float lookSpeed;
 	public float pushForce;
+	public float objectPickupProximity;
 	public GameObject collectedObject;
 	public GameObject cameraGameObject;
 
@@ -30,46 +31,68 @@ public class PlayerController : MonoBehaviour
 
 		moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
 		moveDirection = transform.TransformDirection (moveDirection);
-		moveDirection *= speed;
+		moveDirection *= movementSpeed;
+
 		controls.Move (moveDirection * Time.deltaTime);
 
-		GrabObject ();
-		DropObject ();
+		if (Input.GetKeyDown (KeyCode.Mouse1)) 
+		{
+			GrabObject ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.Mouse0))
+		{
+			DropObject ();
+		}
+
+		if (Input.GetKey (KeyCode.Space)) 
+		{
+			MoveUp ();
+		}
+
+		if (Input.GetKey (KeyCode.LeftShift))
+		{
+			MoveDown ();
+		}
 	}
 
 	void GrabObject()
 	{
-		if (Input.GetKeyDown (KeyCode.Mouse1)) 
-		{
-			RaycastHit forceHit;
-			Ray forceOnClick = Camera.main.ScreenPointToRay (Input.mousePosition);
+		RaycastHit forceHit;
+		Ray forceOnClick = Camera.main.ScreenPointToRay (Input.mousePosition);
 
-			if (Physics.Raycast (forceOnClick, out forceHit)) 
+		if (Physics.Raycast (forceOnClick, out forceHit)) 
+		{
+			if (forceHit.rigidbody.isKinematic == false)
 			{
-				if (forceHit.rigidbody.isKinematic == false)
+				if (Vector3.Distance (transform.position, forceHit.transform.position) <= objectPickupProximity) 
 				{
 					collectedObject = forceHit.rigidbody.gameObject;
 					forceHit.rigidbody.isKinematic = true;
 					forceHit.rigidbody.gameObject.transform.parent = cameraGameObject.transform;
 				}
-
 			}
-
 		}
 	}
 
 	void DropObject()
 	{
-		if (Input.GetKeyDown (KeyCode.E))
+		if (collectedObject != null) 
 		{
-			if (collectedObject != null) 
-			{
-				collectedObject.transform.parent = null;
-				collectedObject.GetComponent<Rigidbody> ().isKinematic = false;
-				collectedObject.GetComponent<Rigidbody> ().AddExplosionForce (pushForce, cameraGameObject.transform.position, 50f);
-				collectedObject = null;
-			}
+			collectedObject.transform.parent = null;
+			collectedObject.GetComponent<Rigidbody> ().isKinematic = false;
+			collectedObject.GetComponent<Rigidbody> ().AddExplosionForce (pushForce, cameraGameObject.transform.position, 50f);
+			collectedObject = null;
 		}
 	}
 
+	void MoveUp()
+	{
+		gameObject.transform.position += Vector3.up * movementSpeed * Time.deltaTime;
+	}
+
+	void MoveDown()
+	{
+		gameObject.transform.position -= Vector3.up * movementSpeed * Time.deltaTime;
+	}
 }
