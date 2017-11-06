@@ -23,7 +23,12 @@ public class AddForcesToObject : MonoBehaviour
 	{
 		if (Input.GetKey (KeyCode.Return)) 
 		{
-			cubeBody.AddForce (Vector3.up, ForceMode.Impulse);
+			if (cubeBody != null) 
+			{
+				cubeBody.AddForce (Vector3.up, ForceMode.Impulse);
+			}
+
+
 		}
 	}
 }
