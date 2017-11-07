@@ -42,12 +42,7 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown (KeyCode.Mouse0))
 		{
-			DropObject ();
-		}
-
-		if (Input.GetKey (KeyCode.Space)) 
-		{
-			MoveUp ();
+			ThrowObject ();
 		}
 
 		if (Input.GetKey (KeyCode.LeftShift))
@@ -75,20 +70,15 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void DropObject()
+	void ThrowObject()
 	{
 		if (collectedObject != null) 
 		{
 			collectedObject.transform.parent = null;
 			collectedObject.GetComponent<Rigidbody> ().isKinematic = false;
-			collectedObject.GetComponent<Rigidbody> ().AddExplosionForce (pushForce, cameraGameObject.transform.position, 50f);
+			collectedObject.GetComponent<Rigidbody> ().AddExplosionForce (pushForce, cameraGameObject.transform.position, 10f);
 			collectedObject = null;
 		}
-	}
-
-	void MoveUp()
-	{
-		gameObject.transform.position += Vector3.up * movementSpeed * Time.deltaTime;
 	}
 
 	void MoveDown()

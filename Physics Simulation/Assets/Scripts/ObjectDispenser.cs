@@ -7,7 +7,7 @@ public class ObjectDispenser : MonoBehaviour
 	public GameObject[] objectsToSpawn;
 	public GameObject positionToSpawn;
 
-	private float timeToSpawnObject = 5f;
+	private float timeToSpawnObject = 3f;
 	private bool objectWasSpawned = false;
 
 	void Update()
@@ -18,7 +18,7 @@ public class ObjectDispenser : MonoBehaviour
 			if (timeToSpawnObject <= 0) 
 			{
 				SpawnRandomObject ();
-				timeToSpawnObject = 5f;
+				timeToSpawnObject = 3f;
 				objectWasSpawned = false;
 			}
 		}
