@@ -6,40 +6,32 @@ public class ObjectDispenser : MonoBehaviour
 {
 	public GameObject[] objectsToSpawn;
 	public GameObject positionToSpawn;
+	public bool objectWasSpawned = false;
 
 	private float timeToSpawnObject = 3f;
-	private bool objectWasSpawned = false;
 
 	void Update()
 	{
-		if (objectWasSpawned == true) 
+		if (objectWasSpawned == true)
 		{
 			timeToSpawnObject -= Time.deltaTime;
+
 			if (timeToSpawnObject <= 0) 
 			{
-				SpawnRandomObject ();
-				timeToSpawnObject = 3f;
+				Debug.Log ("Cooldown finished");
 				objectWasSpawned = false;
+				timeToSpawnObject = 3f;
 			}
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.tag == "Player")
+	public void SpawnRandomObject()
+	{ 
+		if (objectWasSpawned == false)
 		{
+			print ("Object has been spawned. Cooldown initiated");
+			GameObject objectDispensed = Instantiate (objectsToSpawn [(Random.Range (0, objectsToSpawn.Length))], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
 			objectWasSpawned = true;
-		}
-	}
-
-	void SpawnRandomObject()
-	{
-		if (objectWasSpawned == true) 
-		{
-			if (timeToSpawnObject <= 0) 
-			{
-				GameObject objectDispensed = Instantiate (objectsToSpawn [(Random.Range (0, objectsToSpawn.Length))], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
-			}
 		}
 	}
 }

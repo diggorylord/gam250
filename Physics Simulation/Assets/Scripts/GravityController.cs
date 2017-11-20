@@ -23,7 +23,7 @@ public class GravityController : MonoBehaviour
 
 			if (affected != null)
 			{
-				if (affected.tag != "Environment" && affected.tag != "Player") 
+				if (affected.tag != "Environment" && affected.tag != "Player" && affected.tag != "Dispenser") 
 				{
 					otherObjects.AddForce (Vector3.down * gravity, ForceMode.Force);
 				}
