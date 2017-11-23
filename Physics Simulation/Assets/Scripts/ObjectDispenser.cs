@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectDispenser : MonoBehaviour
 {
-	public GameObject[] objectsToSpawn;
+	public GameObject objectToSpawn;
 	public GameObject positionToSpawn;
 	public bool objectWasSpawned = false;
 
@@ -25,12 +25,12 @@ public class ObjectDispenser : MonoBehaviour
 		}
 	}
 
-	public void SpawnRandomObject()
+	public void SpawnObject()
 	{ 
 		if (objectWasSpawned == false)
 		{
 			print ("Object has been spawned. Cooldown initiated");
-			GameObject objectDispensed = Instantiate (objectsToSpawn [(Random.Range (0, objectsToSpawn.Length))], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
+			GameObject objectDispensed = Instantiate (objectToSpawn, positionToSpawn.transform.position, Quaternion.identity) as GameObject;
 			objectWasSpawned = true;
 		}
 	}
