@@ -10,6 +10,7 @@ public class CameraLookControls : MonoBehaviour
 
 	private float rotationy;
 
+
 	void Update ()
 	{
 		rotationy += Input.GetAxis ("Mouse Y") * lookSpeed;
