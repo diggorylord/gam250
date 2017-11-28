@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B2A35863-E442-E2D3-2192-973049DE74EA}</ProjectGuid>
+    <ProjectGuid>{F9009259-CC95-FEF6-667A-74171446A00B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-UnityScript</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -46,14 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraLookControls.cs" />
-     <Compile Include="Assets\Scripts\DoorOpen.cs" />
-     <Compile Include="Assets\Scripts\GravityController.cs" />
-     <Compile Include="Assets\Scripts\LevelChangerButton.cs" />
-     <Compile Include="Assets\Scripts\ObjectDispenser.cs" />
-     <Compile Include="Assets\Scripts\ObjectDisposal.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\UIScript.cs" />
+     <Compile Include="Assets\NewBehaviourScript.js" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
