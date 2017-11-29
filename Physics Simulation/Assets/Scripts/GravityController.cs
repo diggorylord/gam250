@@ -5,10 +5,11 @@ using UnityEngine;
 public class GravityController : MonoBehaviour
 {
 	public float gravity;
+	public bool gravityIsSwapped = false;
 
 	private float physicsRadius = 100000000000000000000f;
 
-	void Start ()
+	void Update()
 	{
 		
 	}
@@ -25,7 +26,14 @@ public class GravityController : MonoBehaviour
 			{
 				if (affected.tag != "Environment" && affected.tag != "Dispenser") 
 				{
-					otherObjects.AddForce (Vector3.down * gravity, ForceMode.Force);
+					if (gravityIsSwapped == true) 
+					{
+						otherObjects.AddForce (Vector3.up * gravity, ForceMode.Force);
+					}
+					else 
+					{
+						otherObjects.AddForce (Vector3.down * gravity, ForceMode.Force);
+					}
 				}
 			}
 		}

@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour 
 {
 	public Text uiText;
+	public Image fillImage;
 
 	private PlayerController controlScript;
+
 
 	void Start()
 	{
@@ -17,5 +19,6 @@ public class UIScript : MonoBehaviour
 	void Update()
 	{
 		uiText.text = "Throw Power: " + controlScript.pushForce;
+		fillImage.fillAmount = controlScript.maxTorchPower / 100f;
 	}
 }
