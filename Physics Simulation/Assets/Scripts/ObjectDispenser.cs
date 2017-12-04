@@ -9,6 +9,7 @@ public class ObjectDispenser : MonoBehaviour
 	public bool objectWasSpawned = false;
 
 	private float timeToSpawnObject = 3f;
+	private GameObject objectDispensed;
 
 	void Update()
 	{
@@ -23,6 +24,8 @@ public class ObjectDispenser : MonoBehaviour
 				timeToSpawnObject = 3f;
 			}
 		}
+
+		objectDispensed.transform.RotateAround (positionToSpawn.transform.position, Vector3.up, 50f);
 	}
 
 	public void SpawnObject1()
@@ -30,7 +33,7 @@ public class ObjectDispenser : MonoBehaviour
 		if (objectWasSpawned == false)
 		{
 			print ("Object has been spawned. Cooldown initiated");
-			GameObject objectDispensed = Instantiate (objectToSpawn[0], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
+			objectDispensed = Instantiate (objectToSpawn[0], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
 			objectWasSpawned = true;
 		}
 	}
@@ -40,7 +43,7 @@ public class ObjectDispenser : MonoBehaviour
 		if (objectWasSpawned == false)
 		{
 			print ("Object has been spawned. Cooldown initiated");
-			GameObject objectDispensed = Instantiate (objectToSpawn[1], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
+			objectDispensed = Instantiate (objectToSpawn[1], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
 			objectWasSpawned = true;
 		}
 	}
@@ -50,7 +53,7 @@ public class ObjectDispenser : MonoBehaviour
 		if (objectWasSpawned == false)
 		{
 			print ("Object has been spawned. Cooldown initiated");
-			GameObject objectDispensed = Instantiate (objectToSpawn[2], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
+			objectDispensed = Instantiate (objectToSpawn[2], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
 			objectWasSpawned = true;
 		}
 	}

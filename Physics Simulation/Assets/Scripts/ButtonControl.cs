@@ -18,7 +18,7 @@ public class ButtonControl : MonoBehaviour {
 
 		#else
 
-		Application.QuitGame();
+		Application.Quit();
 
 		#endif
 	}
