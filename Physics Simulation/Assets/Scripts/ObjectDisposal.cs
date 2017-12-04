@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectDisposal : MonoBehaviour 
 {
+	//This destroys objects that collide with it. It's used for the rubbish bin within my scene that you can put objects into.
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag != "Environment" && other.tag != "Player" && other.tag != "Dispenser") 

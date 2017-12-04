@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class GravityController : MonoBehaviour
 {
+
+	//this script is what effectively simulated gravity and in turn will simulate the physics how I need it to.
 	public float gravity;
 	public bool gravityIsSwapped = false;
 
 	private float physicsRadius = 100000000000000000000f;
 
-	void Update()
-	{
-		
-	}
-
 	void FixedUpdate ()
 	{
+		//This searches for all the colliders inside a massive sphere for something to apply the following effects to.
 		Collider[] allOtherObjects = Physics.OverlapSphere (transform.position, physicsRadius);
 
+		//For each collider found inside the radius, there will be a force added to all objects that don't have specific tags depending on the gravity direction.
 		foreach (Collider affected in allOtherObjects)
 		{
 			Rigidbody otherObjects = affected.GetComponent<Rigidbody> ();
 
 			if (affected != null)
 			{
-				if (affected.tag != "Environment" && affected.tag != "Dispenser") 
+				//This swaps the gravity around so that you can walk on the ceiling.
+				if (affected.tag != "Environment" && affected.tag != "Dispenser"  && affected.tag != "Battery") 
 				{
 					if (gravityIsSwapped == true) 
 					{

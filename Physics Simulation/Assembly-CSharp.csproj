@@ -49,9 +49,9 @@
      <Compile Include="Assets\Scripts\BatteryCollect.cs" />
      <Compile Include="Assets\Scripts\ButtonControl.cs" />
      <Compile Include="Assets\Scripts\CameraLookControls.cs" />
+     <Compile Include="Assets\Scripts\DispenserPosition.cs" />
      <Compile Include="Assets\Scripts\DoorOpen.cs" />
      <Compile Include="Assets\Scripts\GravityController.cs" />
-     <Compile Include="Assets\Scripts\LevelChangerButton.cs" />
      <Compile Include="Assets\Scripts\ObjectDispenser.cs" />
      <Compile Include="Assets\Scripts\ObjectDisposal.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
