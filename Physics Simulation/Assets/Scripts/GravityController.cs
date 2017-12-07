@@ -23,12 +23,14 @@ public class GravityController : MonoBehaviour
 
 			if (affected != null)
 			{
-				//This swaps the gravity around so that you can walk on the ceiling.
-				if (affected.tag != "Environment" && affected.tag != "Dispenser"  && affected.tag != "Battery") 
+				/*This swaps the gravity around so that you can walk on the ceiling. I used the tags so that anything that has these tags 
+				 * wont be affected by gravity. If I was to have everything affected then the force would be too much and objects would
+				 * start moving once they hit the floor as there is too much gravity */
+				if (affected.tag != "Environment" && affected.tag != "Dispenser" && affected.tag != "Page") 
 				{
 					if (gravityIsSwapped == true) 
 					{
-						otherObjects.AddForce (Vector3.up * gravity, ForceMode.Force);
+						otherObjects.AddForce (Vector3.up * gravity, ForceMode.Force);  
 					}
 					else 
 					{

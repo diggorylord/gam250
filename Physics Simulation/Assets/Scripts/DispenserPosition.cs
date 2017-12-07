@@ -26,6 +26,7 @@ public class DispenserPosition : MonoBehaviour
 		}
 	}
 
+	//CHecking of the player collided with it so it can go ahead and move the dispenser.
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") 

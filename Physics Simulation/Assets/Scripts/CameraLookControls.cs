@@ -10,13 +10,26 @@ public class CameraLookControls : MonoBehaviour
 	public float lookSpeed;
 
 	private float rotationy;
+	private UIScript ui;
 
-	//
+	//Grabs the ui script to check one of it's values.
+	void Start()
+	{
+		ui = GameObject.Find ("InGameUI").GetComponent<UIScript> ();
+	}
+
+	//Checks if game is paused. If it is, then you cannot move around with the mouse. If not then gameplay is normal.
 	void Update ()
 	{
-		//These set the rotation so that the camera cannot rotate past a certain point. so you cannot do a full 360 around your body by moving up or down.
-		rotationy += Input.GetAxis ("Mouse Y") * lookSpeed;
-		rotationy = Mathf.Clamp (rotationy, rotationymin, rotationymax);
-		transform.localEulerAngles = new Vector3 (rotationy, transform.localEulerAngles.y, 0f);
+		if (ui.pauseMenu.activeInHierarchy) 
+		{
+			rotationy = Input.GetAxis ("Mouse Y");
+		} 
+		else 
+		{
+			rotationy += Input.GetAxis ("Mouse Y") * lookSpeed; //Rotates camera.
+			rotationy = Mathf.Clamp (rotationy, rotationymin, rotationymax); //Sets a minimum and maximum value so you cannot do a 360 around your body.
+			transform.localEulerAngles = new Vector3 (rotationy, transform.localEulerAngles.y, 0f);
+		}
 	}
 }

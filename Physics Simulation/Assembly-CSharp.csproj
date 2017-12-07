@@ -52,8 +52,10 @@
      <Compile Include="Assets\Scripts\DispenserPosition.cs" />
      <Compile Include="Assets\Scripts\DoorOpen.cs" />
      <Compile Include="Assets\Scripts\GravityController.cs" />
+     <Compile Include="Assets\Scripts\MainMenuCursorUnlock.cs" />
      <Compile Include="Assets\Scripts\ObjectDispenser.cs" />
      <Compile Include="Assets\Scripts\ObjectDisposal.cs" />
+     <Compile Include="Assets\Scripts\PageCollection.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\UIScript.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
