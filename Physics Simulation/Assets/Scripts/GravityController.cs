@@ -6,10 +6,23 @@ public class GravityController : MonoBehaviour
 {
 
 	//this script is what effectively simulated gravity and in turn will simulate the physics how I need it to.
-	public float gravity;
 	public bool gravityIsSwapped = false;
+	public bool gravityIsReduced = false;
 
+	private float gravity;
 	private float physicsRadius = 100000000000000000000f;
+
+	void Update()
+	{
+		if (gravityIsReduced == true) 
+		{
+			gravity = 5f;
+		} 
+		else 
+		{
+			gravity = 20f;
+		}
+	}
 
 	void FixedUpdate ()
 	{
@@ -23,9 +36,10 @@ public class GravityController : MonoBehaviour
 
 			if (affected != null)
 			{
-				/*This swaps the gravity around so that you can walk on the ceiling. I used the tags so that anything that has these tags 
-				 * wont be affected by gravity. If I was to have everything affected then the force would be too much and objects would
-				 * start moving once they hit the floor as there is too much gravity */
+				/*I used the tags so that anything that has these tags wont be affected by 
+				 * gravity. If I was to have everything affected then the force would be too 
+				 * much and objects would start moving once they hit the floor as there is too 
+				 * much gravity */
 				if (affected.tag != "Environment" && affected.tag != "Dispenser" && affected.tag != "Page") 
 				{
 					if (gravityIsSwapped == true) 

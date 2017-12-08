@@ -17,7 +17,7 @@ public class UIScript : MonoBehaviour
 
 	//private variables for the scripts im changing from this one and a timer for one UI that tells you how to sprint.
 	private PlayerController controlScript;
-	private float tutorialTimer = 5f;
+	private float tutorialTimer = 3f;
 
 
 	void Start()
