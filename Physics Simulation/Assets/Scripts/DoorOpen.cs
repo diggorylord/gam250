@@ -11,6 +11,7 @@ public class DoorOpen : MonoBehaviour
 
 	// These are timers and bools to do a reload function so that the door can shut after a time.
 	private float doorOpenTimer = 5f;
+	private float doorCloseValue = 0f;
 	private bool doorIsOpen = false;
 
 	void Update()
@@ -19,7 +20,7 @@ public class DoorOpen : MonoBehaviour
 		if (doorIsOpen == true)
 		{
 			doorOpenTimer -= Time.deltaTime;
-			if (doorOpenTimer <= 0) 
+			if (doorOpenTimer <= doorCloseValue) 
 			{
 				doorIsOpen = false;
 				//This calls the close door method so that the door actually closes.

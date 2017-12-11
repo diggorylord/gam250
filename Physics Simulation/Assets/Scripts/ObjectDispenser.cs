@@ -11,6 +11,8 @@ public class ObjectDispenser : MonoBehaviour
 
 	//this private variable is just for a timer for a reload function.
 	private float timeToSpawnObject = 3f;
+	private int index = 0;
+	private int indexMin = 0;
 
 	void Update()
 	{
@@ -18,6 +20,12 @@ public class ObjectDispenser : MonoBehaviour
 		if (objectWasSpawned == true)
 		{
 			timeToSpawnObject -= Time.deltaTime;
+			index++;
+
+			if (index >= objectToSpawn.Length) 
+			{
+				index = indexMin;
+			}
 
 			if (timeToSpawnObject <= 0) 
 			{
@@ -31,35 +39,13 @@ public class ObjectDispenser : MonoBehaviour
 	/* This area is for the type of object to spawn. This made it easier for the player to spawn a certain object depending on the
 	 * button that they press. each method will spawn a different item from it so that the different buttons work when the player
 	 * presses them. */
-	public void SpawnObject1() //Spawns object 1
+	public void SpawnRandomObject() //Spawns object 1
 	{ 
 		if (objectWasSpawned == false)
 		{
 			print ("Object has been spawned. Cooldown initiated");
-			GameObject objectDispensed1 = Instantiate (objectToSpawn[0], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
-			objectDispensed1.transform.Rotate (Vector3.forward, 180f);
-			objectWasSpawned = true;
-		}
-	}
-
-	public void SpawnObject2() //Spawns object 2
-	{ 
-		if (objectWasSpawned == false)
-		{
-			print ("Object has been spawned. Cooldown initiated");
-			GameObject objectDispensed2 = Instantiate (objectToSpawn[1], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
-			objectDispensed2.transform.Rotate (Vector3.forward, 180f);
-			objectWasSpawned = true;
-		}
-	}
-
-	public void SpawnObject3() //Spawns object 3
-	{ 
-		if (objectWasSpawned == false)
-		{
-			print ("Object has been spawned. Cooldown initiated");
-			GameObject objectDispensed3 = Instantiate (objectToSpawn[2], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
-			objectDispensed3.transform.Rotate (Vector3.forward, 180f);
+			GameObject objectDispensed = Instantiate (objectToSpawn[index], positionToSpawn.transform.position, Quaternion.identity) as GameObject;
+			objectDispensed.transform.Rotate (Vector3.forward, 180f);
 			objectWasSpawned = true;
 		}
 	}

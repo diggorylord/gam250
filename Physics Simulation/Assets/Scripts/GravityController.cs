@@ -10,17 +10,19 @@ public class GravityController : MonoBehaviour
 	public bool gravityIsReduced = false;
 
 	private float gravity;
+	private float gravityReducedValue = 5f;
+	private float gravityRegularValue = 20f;
 	private float physicsRadius = 100000000000000000000f;
 
 	void Update()
 	{
 		if (gravityIsReduced == true) 
 		{
-			gravity = 5f;
+			gravity = gravityReducedValue;
 		} 
 		else 
 		{
-			gravity = 20f;
+			gravity = gravityRegularValue;
 		}
 	}
 
