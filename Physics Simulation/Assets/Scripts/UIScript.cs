@@ -27,6 +27,11 @@ public class UIScript : MonoBehaviour
 		
 	void Update()
 	{
+		UpdateUI ();
+	}
+
+	void UpdateUI()
+	{
 		int pagesLeft = GameObject.FindGameObjectsWithTag ("Page").Length; //Gets an int for how many pages are in the game.
 		uiText.text = "Throw Power: " + controlScript.pushForce; //UI for telling player what their throw power is.
 		uiText2.text = "Batteries Left: " + controlScript.batteriesLeft; //UI for telling the player how many batteries they have.
